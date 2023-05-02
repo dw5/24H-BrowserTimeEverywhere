@@ -1,7 +1,7 @@
 {
-  "name": "Whatsapp 24-Hour Time Format",
-  "description": "Displays time as 24-Hour instead of am/pm",
-  "homepage_url": "https://github.com/MathijsNL/WhatsappTime",
+  "name": "Force 24-Hour Time Format EVERYWHERE",
+  "description": "Displays time as 24-Hour instead of am/pm crap",
+  "homepage_url": "https://github.com/dw5/24H-BrowserTimeEverywhere",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
@@ -12,10 +12,10 @@
   "content_scripts": [
     {
       "matches": [
-        "*://web.whatsapp.com/*"
+        "*://*/*"
       ],
       "js": [
-        "whatsapptime.js"
+        "12hto24h.user.js"
       ]
     }
   ]

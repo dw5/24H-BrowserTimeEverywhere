@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         fff 12 hour format
 // @namespace    https://*
-// @version      1.f12h
+// @version      2.f12h
 // @description  Convert all elements with 12-hour time to 24-hour automatically for all websites. Tested: Discord, Cloud Hetzner Console
 // @author       dw5
-// @homepage     https://dw5.github.io
+// @homepage     https://github.com/dw5/24H-BrowserTimeEverywhere
 // @grant        none
 // @match        https://*/*
 // @run-at       document-start

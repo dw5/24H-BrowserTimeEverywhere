@@ -40,4 +40,4 @@ function convertTimeTo24HourFormat() {
 }
 
 
-setInterval(convertTimeTo24HourFormat, 500);
+setInterval(convertTimeTo24HourFormat, 500); // half of 1 second delay (0.5 s)

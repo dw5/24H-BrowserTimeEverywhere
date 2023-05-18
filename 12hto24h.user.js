@@ -2,7 +2,7 @@
 // @name         fff 12 hour format
 // @namespace    https://*
 // @version      1.f12h
-// @description  Convert all elements with 12-hour time to 24-hour automatically for all websites
+// @description  Convert all elements with 12-hour time to 24-hour automatically for all websites. Tested: Discord, Cloud Hetzner Console
 // @author       dw5
 // @homepage     https://dw5.github.io
 // @grant        none
@@ -10,49 +10,34 @@
 // @run-at       document-start
 // ==/UserScript==
 
-var paddingZero = true; // if it's after 12, don't make it into 012:00
-function fallbackTime() {
+function convertTimeTo24HourFormat() {
+  var timeElements = document.querySelectorAll('body :not(script):not(noscript):not(style):not(textarea):not(input)');
 
-	var timeoutId = null;
-	var abvList = "am|a.m.|a|pm|p.m.|p";
+  timeElements.forEach(function (element) {
+    var nodes = element.childNodes;
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      if (node.nodeType === Node.TEXT_NODE) {
+        var text = node.nodeValue;
+        var regex = /\b(\d{1,2}):(\d{2})(?::(\d{2}))?\s?([ap])\.?m\.?\b/gi;
+        var convertedText = text.replace(regex, function (match, hours, minutes, seconds, meridiem) {
+          var hour = parseInt(hours, 10);
+          if (hour === 12) {
+            hour = meridiem.toLowerCase() === 'a' ? 0 : 12;
+          } else {
+            hour = meridiem.toLowerCase() === 'a' ? hour : hour + 12;
+          }
+          return ('0' + hour).slice(-2) + ':' + minutes + (seconds ? (':' + seconds) : '');
+        });
 
-	function scan(root) {
-		var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-		var n, matches, d, h, m;
-		while((n = w.nextNode()) !== null) {
-			if(n.nextSibling &&
-			   n.textContent.match(/\b(([0-9]{1,2}:)?[0-9]{1,2}) ?$/ig) &&
-			   n.nextSibling.textContent.match(new RegExp("^ ?("+abvList+")\\b", "gi"))) {
-				n.textContent += n.nextSibling.textContent;
-				n.nextSibling.style.display = "none";
-			}
-			n.textContent = n.textContent.replace(new RegExp("\\b([0-9]{1,2}:)?[0-9]{1,2} ?("+abvList+")\\b", "gi"), function(m) {
-				d = m.match(/[0-9]+/g);
-				h = parseInt(d[0]);
-				mins = d[1] || "00";
-				if(m.match(/p/i)) h += 12;
-				if(h == 12) h = 0;
-				else if(h == 24) h = 12;
-				return ((h < 10 && paddingZero)?"0":"")+h+ ":" +mins;
-			});
-		}
-		timeoutId = null;
-	}
-
-	scan(document.body); // first scan - replace
-
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function(m) {
-			if(!timeoutId) timeoutId = setTimeout(function() { scan(m.target) }, 500); // half of 1 second
-				else {
-					clearTimeout(timeoutId);
-					timeoutId = setTimeout(function() { scan(document.body) }, 500);
-				}
-			});
-	});
-
-	observer.observe(document, { childList: true, subtree: true }); // observer = when document changes, scan again, instead of for while interval loop
-
+        if (convertedText !== text) {
+          var newTextNode = document.createTextNode(convertedText);
+          element.replaceChild(newTextNode, node);
+        }
+      }
+    }
+  });
 }
-fallbackTime(); // START ME
-//setInterval(fallbackTime, 500);
+
+
+setInterval(convertTimeTo24HourFormat, 500);

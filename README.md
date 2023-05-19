@@ -6,7 +6,9 @@ Website will be ~~fixed~~ edited within half of 1 second (500ms)
 
 There might be some JavaScript errors thrown, might not work everywhere, but seems to work not that terribly...
 
- [![][greasyfork_icon]][greasyfork_url] or [GitHub](https://github.com/dw5/24H-BrowserTimeEverywhere/raw/main/12hto24h.user.js)
+ [![][greasyfork_icon]][greasyfork_url] or [GitHub](https://github.com/dw5/24H-BrowserTimeEverywhere/raw/main/12hto24h.user.js) <br>
+[Firefox Extension store](https://addons.mozilla.org/en-US/firefox/addon/force-24-hour-time-12hto24h/) -OR- [Chrome webstore](https://chrome.google.com/webstore/detail/cnlcjjkpieaicobjefacmolmhlojdacl)  <BR>  
+And yes from looks of it, extension release works a bit differently from greasyfork despite same exact code... like on this page https://www.mathsisfun.com/time.html ..? (violentmonkey changes am/pm time as well, but browser extension release doesn't touch it, and yes it works because this https://www.onlineconversion.com/date_12-24_hour.htm and other sites confirm it)
 
 # Sources
 Inspired on work from Greenscreener:

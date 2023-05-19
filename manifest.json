@@ -1,6 +1,6 @@
 {
   "name": "Force 24-Hour Time Format EVERYWHERE",
-  "description": "Displays time as 24-Hour instead of am/pm crap",
+  "description": "Displays time as 24-Hour instead of confusing am/pm",
   "homepage_url": "https://github.com/dw5/24H-BrowserTimeEverywhere",
   "icons": {
     "16": "icons/16.png",

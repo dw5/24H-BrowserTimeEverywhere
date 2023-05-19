@@ -8,12 +8,11 @@
     "128": "icons/128.png"
   },
   "manifest_version": 3,
-  "version": "2.0.2",
+  "version": "2.0.0.1",
+  "permissions": ["activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": [
-        "*://*/*"
-      ],
+      "matches": ["https://*/*", "http://*/*"],
       "js": [
         "12hto24h.user.js"
       ]

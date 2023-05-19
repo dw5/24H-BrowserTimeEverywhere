@@ -1,16 +1,15 @@
 // ==UserScript==
-// @name         fff 12 hour format
+// @name         12 hour am pm to 24 hour format
 // @namespace    https://*
 // @version      2.f12h
 // @description  Convert all elements with 12-hour time to 24-hour automatically for all websites. Tested: Discord, Cloud Hetzner Console
 // @author       dw5
 // @homepage     https://github.com/dw5/24H-BrowserTimeEverywhere
 // @icon         https://raw.githubusercontent.com/dw5/24H-BrowserTimeEverywhere/main/icons/128.png
-// @downloadURL  https://github.com/dw5/24H-BrowserTimeEverywhere/raw/main/12hto24h.user.js
-// @updateURL    https://github.com/dw5/24H-BrowserTimeEverywhere/raw/main/12hto24h.user.js
 // @grant        none
 // @match        https://*/*
 // @run-at       document-start
+// @license MIT
 // ==/UserScript==
 
 function convertTimeTo24HourFormat() {
